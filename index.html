@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arthur de Carli · Versão de demonstração</title>
+<meta name="description" content="Reels, Shorts e carrosséis editados todo mês, com legenda dinâmica, cortes ritmados e prazo combinado. Pacotes a partir de R$ 890.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B1530">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F4EF;
+  --navy:#0B1530;
+  --navy-2:#1B3A8C;
+  --blue:#2563EB;
+  --blue-soft:#7FA8FF;
+  --ink:#1E2A4A;
+  --line:rgba(30,42,74,.12);
+  --line-dark:rgba(246,244,239,.14);
+  --muted:rgba(30,42,74,.72);
+  --muted-dark:rgba(246,244,239,.74);
+  --r:20px;
+  --wrap:1160px;
+  --header-h:100px;
+  --wa:#25D366;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 12px)}
+body{font-family:Montserrat,system-ui,sans-serif;font-weight:500;font-size:16px;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+.wrap{width:min(100% - 32px,var(--wrap));margin-inline:auto}
+section{padding:72px 0}
+.dark{background:var(--navy);color:var(--paper);position:relative;overflow:hidden;isolation:isolate}
+.dark::before,.dark::after{content:"";position:absolute;z-index:-1;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,var(--navy-2) 0%,rgba(27,58,140,0) 68%);opacity:.85;pointer-events:none}
+.dark::before{top:-300px;right:-220px}
+.dark::after{bottom:-340px;left:-260px}
+
+.anton{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em;line-height:1.04}
+h2{font-size:clamp(28px,6.4vw,44px);font-weight:600;line-height:1.14;letter-spacing:-.015em;text-wrap:balance}
+h3{font-size:20px;font-weight:600;line-height:1.25}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.dark .eyebrow{color:var(--blue-soft)}
+.lead{font-size:17px;color:var(--muted);max-width:60ch;margin-top:16px}
+.dark .lead{color:var(--muted-dark)}
+.head{margin-bottom:40px}
+.head h2{margin-top:10px}
+.tarja{background:var(--navy);color:var(--paper);padding:.04em .32em;border-radius:8px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.dark .tarja{background:var(--blue);color:var(--paper)}
+.rabisco{position:relative;white-space:nowrap}
+.rabisco svg{position:absolute;left:-2%;bottom:-.24em;width:104%;height:.36em;overflow:visible}
+.rabisco path{fill:none;stroke:var(--blue);stroke-width:5;stroke-linecap:round}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:14px;font-weight:600;font-size:15.5px;border:1.5px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .15s,background .15s;font-family:inherit;text-align:center}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--blue-soft);outline-offset:3px}
+.btn-p{background:var(--blue);color:var(--paper);box-shadow:0 10px 28px -10px rgba(37,99,235,.7)}
+.btn-p:hover{background:#1d54d1}
+.btn-g{border-color:var(--line);color:var(--ink);background:transparent}
+.dark .btn-g{border-color:var(--line-dark);color:var(--paper)}
+.btn-sm{min-height:42px;padding:0 16px;font-size:14px;border-radius:12px}
+.btn-full{width:100%}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* faixa de demonstração */
+.demo-bar{background:#E8DFC4;color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:8px 16px;line-height:1.3}
+.demo-bar b{letter-spacing:.02em}
+
+/* nav */
+.site-head{position:sticky;top:0;z-index:50}
+.nav{background:rgba(11,21,48,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-dark);color:var(--paper)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:600;font-size:16px;flex:none}
+.mono{width:38px;height:38px;border-radius:11px;background:var(--blue);display:grid;place-items:center;font-weight:700;font-size:15px;letter-spacing:.02em;color:var(--paper);flex:none}
+.nav-links{display:none;gap:26px;font-size:14px;font-weight:600}
+.nav-links a{opacity:.82}
+.nav-links a:hover{opacity:1}
+.nav-actions{display:flex;align-items:center;gap:8px}
+.menu-btn{display:grid;place-items:center;width:42px;height:42px;border-radius:11px;border:1.5px solid var(--line-dark);background:transparent;color:var(--paper);cursor:pointer}
+.menu-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.menu-panel{display:none;background:var(--navy);border-bottom:1px solid var(--line-dark);padding:8px 0 20px}
+.menu-panel.open{display:block}
+.menu-panel a{display:block;padding:14px 0;font-weight:600;color:var(--paper);border-top:1px solid var(--line-dark)}
+.skip{position:absolute;left:-999px;top:0;background:var(--blue);color:#fff;padding:8px 16px;z-index:80}
+.skip:focus{left:8px;top:8px}
+
+/* hero */
+.hero{padding:48px 0 64px}
+.hero-grid{display:grid;gap:36px;align-items:start}
+.hero h1{font-size:clamp(34px,9.2vw,68px);margin:14px 0 20px;line-height:1.18}
+.hero h1 .tarja{padding:0 .18em;border-radius:10px;white-space:nowrap;display:inline-block}
+.hero h1 em{font-style:normal;color:var(--blue-soft)}
+.hero .sub{font-size:17px;color:var(--muted-dark);max-width:52ch}
+.hero p.credito{display:inline-block;font-size:14.5px;font-weight:600;color:var(--paper);padding:9px 16px;border:1px solid var(--line-dark);border-radius:14px;background:rgba(246,244,239,.06);margin:0 0 18px;line-height:1.45}
+.hero p.credito b{color:var(--blue-soft);font-weight:700}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.cta-row .btn{width:100%}
+.facts{display:grid;gap:0;border-top:1px solid var(--line-dark)}
+.facts div{padding:16px 0;border-bottom:1px solid var(--line-dark)}
+.facts b{display:block;font-family:Anton,sans-serif;font-weight:400;font-size:28px;line-height:1.1;color:var(--paper)}
+.facts span{font-size:13px;color:var(--muted-dark);line-height:1.4;display:block;margin-top:6px}
+
+/* moldura 9:16 */
+.phone-wrap{display:flex;justify-content:center}
+.phone{width:min(262px,78vw);aspect-ratio:9/16;border-radius:32px;padding:10px;background:linear-gradient(160deg,#1a2c5c,#0B1530 70%);border:1.5px solid var(--blue-soft);box-shadow:0 0 0 1px rgba(127,168,255,.15),0 0 48px -6px rgba(37,99,235,.7),0 30px 60px -30px #000;position:relative;overflow:hidden}
+.phone-screen{position:relative;width:100%;height:100%;border-radius:24px;overflow:hidden;background:#070d1c;display:flex;flex-direction:column}
+.phone-top{flex:none;display:flex;justify-content:center;padding:10px 10px 0;position:relative;z-index:2}
+.phone-tag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(246,244,239,.12);padding:5px 9px;border-radius:7px}
+.phone-split{display:grid;grid-template-columns:1fr 1fr;flex:1;min-height:0;position:relative}
+.phone-split>div{display:flex;align-items:flex-start;justify-content:center;padding-top:14px}
+.ph-antes{background:repeating-linear-gradient(-45deg,rgba(246,244,239,.04) 0 8px,rgba(246,244,239,.07) 8px 16px)}
+.ph-depois{background:radial-gradient(circle at 70% 30%,rgba(37,99,235,.45),rgba(11,21,48,.2) 60%),#101c3c}
+.phone-split span{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-soft);background:rgba(6,12,28,.55);padding:5px 9px;border-radius:7px}
+.phone-div{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--blue-soft);transform:translateX(-50%);box-shadow:0 0 10px var(--blue)}
+.phone-div::after{content:"";position:absolute;top:42%;left:50%;width:22px;height:22px;border-radius:50%;border:2px solid var(--blue-soft);background:var(--navy);transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(11,21,48,.5)}
+.phone-msg{position:absolute;inset:auto 14px 16px;background:rgba(6,12,28,.88);border:1px dashed rgba(127,168,255,.55);border-radius:16px;padding:16px 14px 18px;text-align:center;backdrop-filter:blur(6px);z-index:2}
+.phone-msg .play{width:46px;height:46px;border-radius:50%;background:var(--blue);display:grid;place-items:center;margin:0 auto 12px;box-shadow:0 8px 20px -8px rgba(37,99,235,.9)}
+.phone-msg .play svg{width:16px;height:16px;fill:var(--paper);margin-left:2px}
+.phone-msg p{font-size:13px;font-weight:600;line-height:1.4;color:var(--paper)}
+
+/* trabalhos */
+#trabalhos{border-top:1px solid var(--line-dark)}
+.tcards{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,72vw);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 16px 18px;margin-inline:-16px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.tcard{scroll-snap-align:start;background:linear-gradient(170deg,#152758,#0B1530 75%);border:1.5px solid var(--blue-soft);border-radius:22px;overflow:hidden;box-shadow:0 0 34px -10px rgba(37,99,235,.7);display:flex;flex-direction:column;color:var(--paper)}
+.tcard-frame{aspect-ratio:9/16;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px 18px;text-align:center;background:
+  radial-gradient(circle at 50% 32%,rgba(37,99,235,.28),transparent 58%),
+  repeating-linear-gradient(-45deg,rgba(246,244,239,.03) 0 7px,rgba(246,244,239,.06) 7px 14px)}
+.tcard-frame::before{content:"";position:absolute;inset:12px;border:1.5px dashed rgba(127,168,255,.45);border-radius:16px;pointer-events:none}
+.tcard-frame .play{width:54px;height:54px;border-radius:50%;background:rgba(246,244,239,.1);border:1.5px solid var(--line-dark);display:grid;place-items:center;position:relative}
+.tcard-frame .play svg{width:18px;height:18px;fill:var(--paper);margin-left:3px}
+.tcard-frame p{position:relative;font-size:13.5px;font-weight:600;line-height:1.4;max-width:18ch;color:var(--muted-dark)}
+.tcard-who{display:flex;align-items:center;gap:12px;padding:14px 16px;border-top:1px solid var(--line-dark);background:rgba(6,12,28,.55);min-width:0}
+.tcard-who img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex:none;background:#fff;border:1.5px solid var(--line-dark)}
+.tcard-who img.logo{object-fit:contain;padding:5px}
+.tcard-who>div{min-width:0}.tcard-who b{font-size:14px;font-weight:600;line-height:1.3;display:block;overflow-wrap:break-word}
+.tcard-who small{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-soft)}
+
+/* amostra */
+#amostra{padding-top:72px}
+.oferece{background:var(--navy);color:var(--paper);border-radius:24px;padding:36px 24px;position:relative;overflow:hidden;background-image:radial-gradient(circle at 100% 0,var(--navy-2),transparent 58%)}
+.oferece h2{margin-top:10px}
+.oferece .lead{color:var(--muted-dark);font-size:17px;margin-top:18px;max-width:58ch}
+.tba{display:inline-flex;align-items:baseline;gap:8px;flex-wrap:wrap;background:#FFE08A;color:#1E2A4A;padding:3px 10px 4px;border-radius:8px;border:1.5px dashed #C49212;font-weight:700;line-height:1.3;vertical-align:baseline}
+.tba small{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7A5A00}
+.oferece .btn{margin-top:28px}
+
+/* passos */
+.steps{display:grid;gap:16px;counter-reset:s}
+.step{padding:28px 24px;border-radius:var(--r);border:1px solid var(--line);background:#fff}
+.step h3{margin:18px 0 8px}
+.step p{font-size:15px;color:var(--muted)}
+.step .meta{margin-top:16px;font-size:13px;font-weight:700;color:var(--blue)}
+.selo{display:inline-grid;place-items:center;min-width:52px;height:52px;padding:0 12px;border-radius:14px;background:var(--blue);color:var(--paper);font-family:Anton,sans-serif;font-size:24px;line-height:1}
+
+/* preços */
+.piloto{display:grid;gap:20px;background:var(--navy);color:var(--paper);border-radius:24px;padding:28px 24px;margin-bottom:24px;background-image:radial-gradient(circle at 100% 0,var(--navy-2),transparent 55%)}
+.piloto .price{font-family:Anton,sans-serif;font-size:44px;line-height:1}
+.piloto .price small{display:block;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-soft);margin-bottom:8px}
+.piloto h3{font-size:19px}
+.piloto p{font-size:14.5px;color:var(--muted-dark);margin-top:6px;max-width:58ch}
+.plans{display:grid;gap:20px;align-items:stretch}
+.plan{background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px 24px;display:flex;flex-direction:column;position:relative}
+.plan.rec{border:2px solid var(--blue);box-shadow:0 0 0 6px rgba(37,99,235,.1),0 30px 50px -34px rgba(37,99,235,.8)}
+.badge{position:absolute;top:-14px;left:24px;background:var(--blue);color:var(--paper);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:8px}
+.plan h3{font-size:18px}
+.plan .sub{font-size:14px;color:var(--muted);margin-top:4px}
+.plan .price{font-family:Anton,sans-serif;font-size:48px;line-height:1;margin:18px 0 4px}
+.plan .price small{font-family:Montserrat,sans-serif;font-size:14px;font-weight:600;color:var(--muted)}
+.plan .per{font-size:13px;font-weight:600;color:var(--blue)}
+.plan ul{list-style:none;margin:24px 0 28px;padding-top:22px;border-top:1px solid var(--line);display:grid;gap:11px;flex:1;align-content:start}
+.plan li{font-size:14.5px;line-height:1.4;padding-left:28px;position:relative}
+.plan li::before{content:"";position:absolute;left:0;top:2px;width:18px;height:18px;border-radius:6px;background:rgba(37,99,235,.12) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.4l2.6 2.6L13 6.4' fill='none' stroke='%232563EB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat}
+.plan li b{font-weight:700}
+.perks{display:grid;gap:16px;margin-top:20px}
+.perk{display:flex;gap:16px;align-items:center;border:1.5px dashed rgba(37,99,235,.45);border-radius:var(--r);padding:20px 22px;font-size:15px;background:#fff}
+.perk b{font-family:Anton,sans-serif;font-weight:400;font-size:36px;color:var(--blue);line-height:1;flex:none}
+
+/* acordeão extras */
+.acordeao{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden}
+.acordeao>summary{list-style:none;cursor:pointer;padding:22px 56px 22px 24px;font-weight:700;font-size:16.5px;position:relative;color:var(--ink)}
+.acordeao>summary::-webkit-details-marker{display:none}
+.acordeao>summary::after{content:"+";position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:28px;font-weight:500;color:var(--blue);line-height:1}
+.acordeao[open]>summary{border-bottom:1px solid var(--line)}
+.acordeao[open]>summary::after{content:"–";font-size:32px}
+.acordeao-corpo{padding:8px 24px 28px}
+.acordeao-corpo h3{margin:24px 0 6px}
+.acordeao-corpo .hint{font-size:14px;color:var(--muted);margin-bottom:8px}
+.row{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid var(--line);font-size:15px;align-items:baseline}
+.row span:last-child{font-weight:700;white-space:nowrap;text-align:right}
+.avulsos{display:grid;gap:12px;margin-top:8px}
+.avulso{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-top:1px solid var(--line)}
+.avulso .ico{width:44px;height:44px;border-radius:12px;background:linear-gradient(145deg,#3b78f5,#1b3a8c);display:grid;place-items:center;flex:none;box-shadow:inset 0 2px 0 rgba(255,255,255,.3),0 8px 14px -8px rgba(37,99,235,.7)}
+.avulso .ico svg{width:20px;height:20px;stroke:var(--paper);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.avulso h4{font-size:15.5px;font-weight:600}
+.avulso p{font-size:13.5px;color:var(--muted);margin-top:2px}
+.avulso .from{font-size:13.5px;font-weight:700;color:var(--ink);margin-top:6px;white-space:nowrap}
+
+/* sobre */
+.about{display:grid;gap:36px;align-items:center}
+.photo{aspect-ratio:4/5;border-radius:24px;border:1.5px solid var(--blue-soft);box-shadow:0 0 40px -10px rgba(37,99,235,.7);background:linear-gradient(160deg,#16295c,#0B1530);overflow:hidden;position:relative;max-width:340px}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.about p{color:var(--muted-dark);margin-top:16px;max-width:56ch}
+.pillars{display:grid;gap:12px;margin-top:28px}
+.pillar{border:1px solid var(--line-dark);border-radius:16px;padding:18px;background:rgba(246,244,239,.04)}
+.pillar b{display:block;font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;font-size:20px;color:var(--blue-soft);letter-spacing:.02em}
+.pillar span{font-size:13.5px;color:var(--muted-dark);line-height:1.45;display:block;margin-top:6px}
+.sign{margin-top:28px;font-weight:600;color:var(--paper)}
+.sign a{color:var(--blue-soft)}
+
+/* faq */
+#faq .head{margin-bottom:28px}
+details.faq{border-bottom:1px solid var(--line)}
+details.faq:first-of-type{border-top:1px solid var(--line)}
+details.faq summary{list-style:none;cursor:pointer;padding:20px 40px 20px 0;font-weight:600;font-size:16.5px;position:relative}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:"+";position:absolute;right:4px;top:14px;font-size:26px;font-weight:500;color:var(--blue);transition:transform .2s}
+details.faq[open] summary::after{transform:rotate(45deg)}
+details.faq p{padding:0 40px 22px 0;color:var(--muted);font-size:15.5px}
+
+/* contato final */
+.contato-final{padding:80px 0}
+.contato-final .box{text-align:center;max-width:640px;margin-inline:auto}
+.contato-final h2{font-size:clamp(28px,6vw,44px)}
+.contato-final p{color:var(--muted-dark);font-size:18px;margin:18px 0 32px}
+.contato-final .btn{min-width:260px}
+.ig-link{display:inline-block;margin-top:22px;font-size:15px;font-weight:600;color:var(--blue-soft);border-bottom:1px solid transparent}
+.ig-link:hover{border-bottom-color:var(--blue-soft)}
+
+footer{background:var(--navy);color:var(--muted-dark);padding:28px 0 32px;font-size:14px;border-top:1px solid var(--line-dark)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
+footer .brand{color:var(--paper)}
+footer .demo-foot{width:100%;text-align:center;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#E8DFC4;padding-top:8px}
+
+/* botão fixo WhatsApp — só celular */
+.wa-float{position:fixed;right:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:60;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--wa);color:#063d1e;box-shadow:0 10px 28px -8px rgba(18,140,70,.75)}
+.wa-float:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.wa-float .wa-ico{width:56px;height:56px;display:grid;place-items:center}
+.wa-float .wa-ico svg{width:30px;height:30px;fill:#fff}
+.wa-float .wa-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+@media (min-width:981px){
+  .wa-float{display:none}
+}
+
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+
+@media (min-width:640px){
+  body{font-size:17px}
+  .cta-row .btn{width:auto}
+  .facts{grid-template-columns:repeat(3,1fr);gap:0}
+  .facts div{padding:20px 16px 0 0;border-bottom:0}
+  .facts div+div{padding-left:20px;border-left:1px solid var(--line-dark)}
+  .pillars{grid-template-columns:repeat(3,1fr);gap:14px}
+  .perks{grid-template-columns:1fr 1fr}
+  .avulsos{grid-template-columns:1fr 1fr;column-gap:28px}
+  .oferece{padding:48px 44px}
+  .piloto{grid-template-columns:auto 1fr auto;align-items:center;gap:28px;padding:28px 32px}
+  .piloto .btn{justify-self:end}
+}
+@media (min-width:900px){
+  section{padding:96px 0}
+  .hero{padding:72px 0 88px}
+  .hero-grid{grid-template-columns:1.15fr .85fr;grid-template-areas:"copy phone" "facts phone";gap:28px 56px;align-items:center}
+  .hero-copy{grid-area:copy}
+  .phone-wrap{grid-area:phone;align-self:center}
+  .facts{grid-area:facts;margin-top:12px}
+  .wrap{width:min(100% - 40px,var(--wrap))}
+  .nav-links{display:flex}
+  .menu-btn,.menu-panel{display:none!important}
+  .brand .name{display:inline}
+  .steps{grid-template-columns:repeat(3,1fr);gap:20px}
+  .plans{grid-template-columns:repeat(3,1fr)}
+  .about{grid-template-columns:.8fr 1.2fr;gap:56px}
+  .tcards{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);grid-auto-columns:unset;overflow:visible;margin-inline:0;padding:4px 0 0;gap:20px}
+  .contato-final{padding:108px 0}
+  .oferece{display:grid;grid-template-columns:1fr auto;grid-template-areas:"eye ." "title btn" "lead btn";column-gap:48px;align-items:center;padding:48px 52px}
+  .oferece .eyebrow{grid-area:eye}
+  .oferece h2{grid-area:title;margin-top:10px}
+  .oferece .lead{grid-area:lead}
+  .oferece .btn{grid-area:btn;margin-top:0;align-self:center;white-space:nowrap}
+}
+@media (max-width:639px){
+  .brand .name{display:none}
+  footer{padding-bottom:calc(28px + 76px)}
+  .piloto .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#topo">Pular para o conteúdo</a>
+
+<div class="site-head">
+  <div class="demo-bar">Versão de demonstração</div>
+  <header class="nav">
+    <div class="wrap">
+      <a href="#topo" class="brand" aria-label="Arthur de Carli, início">
+        <span class="mono">AC</span><span class="name">Arthur de Carli</span>
+      </a>
+      <nav class="nav-links" aria-label="Seções">
+        <a href="#trabalhos">Trabalhos</a>
+        <a href="#amostra">Amostra</a>
+        <a href="#precos">Pacotes</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#faq">Dúvidas</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-p btn-sm" href="https://wa.me/5543991328522?text=Oi%2C%20Arthur%21%20Quero%20pedir%20uma%20amostra%20gr%C3%A1tis." target="_blank" rel="noopener" data-wa="Oi, Arthur! Quero pedir uma amostra grátis.">Amostra grátis</a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="Abrir menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="menu-panel" id="menu-panel">
+    <div class="wrap">
+      <a href="#trabalhos">Trabalhos</a>
+      <a href="#amostra">Amostra</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#precos">Pacotes</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#faq">Dúvidas</a>
+    </div>
+  </div>
+</div>
+
+<main id="topo">
+
+<!-- HERO -->
+<section class="hero dark">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Edição de vídeo e conteúdo para redes</span>
+      <h1 class="anton">Seu conteúdo no ar <em>toda semana.</em><br>Sem você abrir<br><span class="tarja">o editor.</span></h1>
+      <p class="credito">Edito vídeos para <b>Andrea Vermont</b>, <b>Pastor Claudio Duarte</b> e <b>Fibrillare Móveis</b>.</p>
+      <p class="sub">Você grava, eu devolvo Reels, Shorts e carrosséis prontos pra postar, com legenda dinâmica, corte no ritmo e prazo combinado.</p>
+      <div class="cta-row">
+        <a class="btn btn-p" href="https://wa.me/5543991328522?text=Oi%2C%20Arthur%21%20Quero%20pedir%20uma%20amostra%20gr%C3%A1tis." target="_blank" rel="noopener" data-wa="Oi, Arthur! Quero pedir uma amostra grátis.">
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><path fill="currentColor" d="M19.1 4.9A9.9 9.9 0 0 0 3.3 15.6L2 22l6.5-1.3A9.9 9.9 0 0 0 12 22a10 10 0 0 0 7.1-17.1zM12 20.2a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-3.9.8.8-3.8-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1l-.8 1c-.1.1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5.1-.2c0-.1 0-.3-.1-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3s-.8.8-.8 1.9.8 2.2.9 2.3a10.3 10.3 0 0 0 3.9 3.1c.6.2 1 .4 1.4.5.6.2 1.1.1 1.5.1.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1-.2-.2-.4-.3z"/></svg>
+          Pedir amostra grátis no WhatsApp
+        </a>
+        <a class="btn btn-g" href="#precos">Ver pacotes</a>
+      </div>
+    </div>
+
+    <div class="phone-wrap">
+      <div class="phone" role="img" aria-label="Espaço reservado: aqui entra um Reels real editado por você, antes e depois, uns 10 segundos.">
+        <div class="phone-screen">
+          <div class="phone-top"><span class="phone-tag">Reels · 9:16</span></div>
+          <div class="phone-split" aria-hidden="true">
+            <div class="ph-antes"><span>Antes</span></div>
+            <div class="ph-depois"><span>Depois</span></div>
+            <i class="phone-div"></i>
+          </div>
+          <div class="phone-msg">
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></span>
+            <p>Aqui entra um Reels real editado por você (antes x depois, ~10s)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="facts">
+      <div><b>4 A 24</b><span>vídeos curtos por mês, conforme o pacote</span></div>
+      <div><b>2 A 5 DIAS</b><span>úteis de prazo por lote entregue</span></div>
+      <div><b>SEM FIDELIDADE</b><span>no 1º mês. Cancele com 7 dias de aviso</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRABALHOS -->
+<section id="trabalhos" class="dark trabalhos">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Trabalhos</span>
+      <h2>Vídeos que eu <span class="tarja">editei</span></h2>
+      <p class="lead">Toca aí. Esses saíram da minha edição, com autorização de quem gravou.</p>
+    </div>
+    <div class="tcards rv">
+      <article class="tcard">
+        <div class="tcard-frame">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></span>
+          <p>vídeo a inserir com autorização</p>
+        </div>
+        <div class="tcard-who">
+          <img src="clientes/andrea-vermont/foto.jpg" alt="Andrea Vermont" width="42" height="42">
+          <div>
+            <b>Andrea Vermont</b>
+          </div>
+        </div>
+      </article>
+      <article class="tcard">
+        <div class="tcard-frame">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></span>
+          <p>vídeo a inserir com autorização</p>
+        </div>
+        <div class="tcard-who">
+          <img src="clientes/claudio-duarte/foto.jpg" alt="Pastor Claudio Duarte" width="42" height="42">
+          <div>
+            <b>Pastor Claudio Duarte</b>
+          </div>
+        </div>
+      </article>
+      <article class="tcard">
+        <div class="tcard-frame">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></span>
+          <p>vídeo a inserir com autorização</p>
+        </div>
+        <div class="tcard-who">
+          <img class="logo" src="clientes/fibrillare/logo.jpg" alt="Fibrillare Móveis" width="42" height="42">
+          <div>
+            <b>Fibrillare Móveis</b>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- AMOSTRA -->
+<section id="amostra">
+  <div class="wrap">
+    <div class="oferece rv">
+      <span class="eyebrow">Amostra grátis</span>
+      <h2>Teste antes de pagar</h2>
+      <p class="lead">Me manda um vídeo bruto seu e eu devolvo editado, de graça: 1 vídeo de até 60s, em até <span class="tba">[X] dias úteis <small>a confirmar</small></span>. Gostou, a gente conversa sobre pacote. Não gostou, ficou com o vídeo.</p>
+      <a class="btn btn-p" href="https://wa.me/5543991328522?text=Oi%2C%20Arthur%21%20Quero%20pedir%20uma%20amostra%20gr%C3%A1tis." target="_blank" rel="noopener" data-wa="Oi, Arthur! Quero pedir uma amostra grátis.">Quero minha amostra</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Como funciona</span>
+      <h2>Três passos. Você só grava e aprova.</h2>
+    </div>
+    <div class="steps">
+      <div class="step rv">
+        <span class="selo">#1</span>
+        <h3>Você envia o bruto</h3>
+        <p>Combinamos o lote do mês e você manda o material gravado. Quanto mais organizado, mais rápido sai.</p>
+        <div class="meta">Envio em até 48h após o início do lote</div>
+      </div>
+      <div class="step rv">
+        <span class="selo">#2</span>
+        <h3>Eu edito e entrego</h3>
+        <p>Cortes ritmados, legenda dinâmica e, conforme o pacote, capas, legendas de postagem e calendário de pautas.</p>
+        <div class="meta">Entrega em 2 a 5 dias úteis por lote</div>
+      </div>
+      <div class="step rv">
+        <span class="selo">#3</span>
+        <h3>Você revisa e posta</h3>
+        <p>Pediu ajuste, eu ajusto. Aprovou, é só postar. Ou eu agendo tudo para você como extra.</p>
+        <div class="meta">1 a 3 alterações por vídeo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREÇOS -->
+<section id="precos">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Preços</span>
+      <h2>Pacotes mensais com preço <span class="rabisco">na mesa<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 7c40-5 70-5 100-2s60 3 96-1"/></svg></span></h2>
+      <p class="lead">Sem orçamento surpresa. Escolha o volume que cabe na sua rotina e ajuste quando quiser.</p>
+    </div>
+
+    <div class="piloto rv">
+      <div class="price"><small>Piloto · só no 1º mês</small>R$ 397</div>
+      <div>
+        <h3>Comece pequeno e veja o resultado</h3>
+        <p>4 vídeos curtos com legenda dinâmica e cortes ritmados, 1 alteração por vídeo e entrega em 5 dias úteis. Vale uma única vez; depois você migra para um pacote cheio.</p>
+      </div>
+      <a class="btn btn-p" href="https://wa.me/5543991328522?text=Oi%2C%20Arthur%21%20Quero%20começar%20pelo%20pacote%20Piloto%20(R%24%20397)." target="_blank" rel="noopener" data-wa="Oi, Arthur! Quero começar pelo pacote Piloto (R$ 397).">Começar pelo piloto</a>
+    </div>
+
+    <div class="plans">
+      <article class="plan rv">
+        <h3>Essencial</h3>
+        <p class="sub">Para manter 2 vídeos por semana no ar.</p>
+        <div class="price">R$ 890<small> /mês</small></div>
+        <span class="per">≈ R$ 111 por vídeo</span>
+        <ul>
+          <li><b>8 vídeos curtos</b> (Reels/Shorts, até 60s)</li>
+          <li>Legenda dinâmica e cortes ritmados</li>
+          <li>Legendas de postagem prontas</li>
+          <li>2 alterações por vídeo</li>
+          <li>Entrega em 4 dias úteis por lote</li>
+        </ul>
+        <a class="btn btn-g btn-full" href="https://wa.me/5543991328522?text=Oi%2C%20Arthur%21%20Tenho%20interesse%20no%20pacote%20Essencial%20(R%24%20890%2Fm%C3%AAs)." target="_blank" rel="noopener" data-wa="Oi, Arthur! Tenho interesse no pacote Essencial (R$ 890/mês).">Quero o Essencial</a>
+      </article>
+
+      <article class="plan rec rv">
+        <span class="badge">Recomendado</span>
+        <h3>Crescimento</h3>
+        <p class="sub">Vídeo quase todo dia útil, com carrossel e pauta resolvidos.</p>
+        <div class="price">R$ 1.790<small> /mês</small></div>
+        <span class="per">≈ R$ 90 por conteúdo</span>
+        <ul>
+          <li><b>16 vídeos curtos</b> (Reels/Shorts, até 60s)</li>
+          <li><b>4 carrosséis</b> de Instagram</li>
+          <li>Legenda dinâmica e cortes ritmados</li>
+          <li>Capas dos vídeos</li>
+          <li>Legendas de postagem prontas</li>
+          <li>Calendário de pautas</li>
+          <li>2 alterações por vídeo ou carrossel</li>
+          <li>Entrega em 3 dias úteis por lote</li>
+        </ul>
+        <a class="btn btn-p btn-full" href="https://wa.me/5543991328522?text=Oi%2C%20Arthur%21%20Tenho%20interesse%20no%20pacote%20Crescimento%20(R%24%201.790%2Fm%C3%AAs)." target="_blank" rel="noopener" data-wa="Oi, Arthur! Tenho interesse no pacote Crescimento (R$ 1.790/mês).">Quero o Crescimento</a>
+      </article>
+
+      <article class="plan rv">
+        <h3>Completo</h3>
+        <p class="sub">Presença diária, prioridade no prazo e mais alterações.</p>
+        <div class="price">R$ 2.890<small> /mês</small></div>
+        <span class="per">≈ R$ 90 por conteúdo</span>
+        <ul>
+          <li><b>24 vídeos curtos</b> (Reels/Shorts, até 60s)</li>
+          <li><b>8 carrosséis</b> de Instagram</li>
+          <li>Legenda dinâmica e cortes ritmados</li>
+          <li>Capas dos vídeos</li>
+          <li>Legendas de postagem prontas</li>
+          <li>Calendário de pautas</li>
+          <li>3 alterações por vídeo ou carrossel</li>
+          <li>Entrega em 2 dias úteis por lote</li>
+        </ul>
+        <a class="btn btn-g btn-full" href="https://wa.me/5543991328522?text=Oi%2C%20Arthur%21%20Tenho%20interesse%20no%20pacote%20Completo%20(R%24%202.890%2Fm%C3%AAs)." target="_blank" rel="noopener" data-wa="Oi, Arthur! Tenho interesse no pacote Completo (R$ 2.890/mês).">Quero o Completo</a>
+      </article>
+    </div>
+
+    <div class="perks">
+      <div class="perk rv"><b>10%</b><span><strong>Pagamento trimestral adiantado.</strong> Feche três meses de uma vez e pague menos.</span></div>
+      <div class="perk rv"><b>10%</b><span><strong>Indicou e fechou.</strong> Desconto no seu mês seguinte a cada indicação que vira contrato.</span></div>
+    </div>
+
+    <details class="acordeao rv">
+      <summary>Ver extras e avulsos</summary>
+      <div class="acordeao-corpo">
+        <h3>Extras para o seu pacote</h3>
+        <p class="hint">Some ao pacote só o que fizer sentido no mês.</p>
+        <div class="row"><span>Vídeo adicional no mês</span><span>R$ 110</span></div>
+        <div class="row"><span>Carrossel adicional no mês</span><span>R$ 160</span></div>
+        <div class="row"><span>Urgência (entrega em 24h)</span><span>+30% sobre o valor</span></div>
+        <div class="row"><span>Alteração extra além das incluídas</span><span>R$ 30 cada</span></div>
+        <div class="row"><span>Roteiro e ideias de pauta (4 por mês)</span><span>R$ 250 /mês</span></div>
+        <div class="row"><span>Postagem e agendamento nas redes</span><span>R$ 300 /mês</span></div>
+
+        <h3>Serviços avulsos</h3>
+        <p class="hint">Sem mensalidade. O valor varia com a duração e a organização do material bruto.</p>
+        <div class="avulsos">
+          <article class="avulso">
+            <div class="ico"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 9.5l4 2.5-4 2.5z"/></svg></div>
+            <div>
+              <h4>Reels e Shorts</h4>
+              <p>Cortes de até 60s com legenda dinâmica e ritmo que segura a pessoa até o final.</p>
+              <div class="from">Avulso R$ 120 a R$ 180</div>
+            </div>
+          </article>
+          <article class="avulso">
+            <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="12" height="14" rx="2.5"/><path d="M18 7.5v9M21 9.5v5"/></svg></div>
+            <div>
+              <h4>Carrosséis de Instagram</h4>
+              <p>Até 8 slides no seu padrão visual, feitos para salvar e compartilhar.</p>
+              <div class="from">Avulso R$ 130 a R$ 240</div>
+            </div>
+          </article>
+          <article class="avulso">
+            <div class="ico"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg></div>
+            <div>
+              <h4>Vídeo longo</h4>
+              <p>Edição de vídeos de até 10 minutos, do bruto ao arquivo final.</p>
+              <div class="from">Avulso R$ 250 a R$ 500</div>
+            </div>
+          </article>
+          <article class="avulso">
+            <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 15l5-4.5 4 3.5 3-2.5 6 5"/><circle cx="15.5" cy="9" r="1.5"/></svg></div>
+            <div>
+              <h4>Capas e thumbnails</h4>
+              <p>Capas que deixam o feed organizado e fazem o clique acontecer.</p>
+              <div class="from">Avulso R$ 50 a R$ 80</div>
+            </div>
+          </article>
+          <article class="avulso">
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.6L20 9.3l-4.4 3.9 1.3 5.8L12 16l-4.9 3 1.3-5.8L4 9.3l5.8-.7z"/></svg></div>
+            <div>
+              <h4>Vinheta em motion</h4>
+              <p>Intro ou vinheta simples para dar cara de marca aos seus vídeos.</p>
+              <div class="from">Avulso R$ 250 a R$ 500</div>
+            </div>
+          </article>
+          <article class="avulso">
+            <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M8 14.5h3M8 17.5h6"/></svg></div>
+            <div>
+              <h4>Pauta, legenda e postagem</h4>
+              <p>Calendário de pautas, legendas de postagem prontas e agendamento nas redes.</p>
+              <div class="from">Incluso nos pacotes ou como extra</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="dark">
+  <div class="wrap about">
+    <div class="photo rv"><img src="arthur.jpg" alt="Retrato de Arthur de Carli" width="977" height="1200"></div>
+    <div class="rv">
+      <span class="eyebrow">Sobre</span>
+      <h2>Oi, eu sou o Arthur.</h2>
+      <p>Edito vídeos curtos e carrosséis para quem tem o que dizer, mas não tem tempo de ficar horas no editor. Você fala direto comigo, do primeiro corte à entrega final.</p>
+      <p>Meu trabalho é simples de medir: seu conteúdo sai no prazo, com padrão, e as pessoas assistem até o fim.</p>
+      <div class="pillars">
+        <div class="pillar"><b>Retenção</b><span>Cortes e legendas pensados para segurar a atenção.</span></div>
+        <div class="pillar"><b>Constância</b><span>Lote fechado, prazo combinado, feed sempre ativo.</span></div>
+        <div class="pillar"><b>Tempo</b><span>Você grava. O resto fica comigo.</span></div>
+      </div>
+      <p class="sign">Arthur de Carli · <a href="https://instagram.com/arthurdecarli08" target="_blank" rel="noopener">@arthurdecarli08</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Dúvidas frequentes</span>
+      <h2>Antes de você perguntar</h2>
+    </div>
+    <div class="rv">
+      <details class="faq">
+        <summary>Como funciona a amostra grátis?</summary>
+        <p>Você me manda um vídeo bruto, eu edito um de até 60s e te devolvo. Sem compromisso e sem cartão.</p>
+      </details>
+      <details class="faq">
+        <summary>Como funciona o pagamento?</summary>
+        <p>Pacotes mensais são pagos adiantado, via Pix ou cartão, no dia combinado de cada mês. Avulsos: 50% na aprovação do escopo e 50% na entrega do arquivo final.</p>
+      </details>
+      <details class="faq">
+        <summary>Tem fidelidade? Posso cancelar?</summary>
+        <p>Não há fidelidade no 1º mês. Para cancelar, basta avisar com 7 dias de antecedência.</p>
+      </details>
+      <details class="faq">
+        <summary>Como envio o material e quando o prazo começa?</summary>
+        <p>Você envia o material bruto em até 48 horas após o início do lote. Se o envio atrasar, o prazo de entrega se desloca na mesma medida.</p>
+      </details>
+      <details class="faq">
+        <summary>E se eu quiser mais alterações do que as incluídas?</summary>
+        <p>Cada pacote inclui de 1 a 3 alterações por vídeo. O que passar disso é cobrado como extra: R$ 30 por alteração.</p>
+      </details>
+      <details class="faq">
+        <summary>Preciso de um vídeo para amanhã. Dá?</summary>
+        <p>Dá. A entrega em 24 horas tem um adicional de 30% sobre o valor do vídeo.</p>
+      </details>
+      <details class="faq">
+        <summary>O que é o pacote Piloto?</summary>
+        <p>É a porta de entrada: 4 vídeos por R$ 397, só no primeiro mês. Ele não se repete; a partir do segundo mês você escolhe entre Essencial, Crescimento e Completo.</p>
+      </details>
+      <details class="faq">
+        <summary>Posso pedir mais vídeos no meio do mês?</summary>
+        <p>Pode. Vídeo adicional sai por R$ 110 e carrossel adicional por R$ 160, sem precisar trocar de pacote.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="dark contato-final">
+  <div class="wrap">
+    <div class="box rv">
+      <h2>Me conta o que você posta hoje.</h2>
+      <p>Eu te respondo com uma ideia e a sua amostra.</p>
+      <a class="btn btn-p" href="https://wa.me/5543991328522?text=Oi%2C%20Arthur%21%20Quero%20pedir%20uma%20amostra%20gr%C3%A1tis." target="_blank" rel="noopener" data-wa="Oi, Arthur! Quero pedir uma amostra grátis.">
+        <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><path fill="currentColor" d="M19.1 4.9A9.9 9.9 0 0 0 3.3 15.6L2 22l6.5-1.3A9.9 9.9 0 0 0 12 22a10 10 0 0 0 7.1-17.1zM12 20.2a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-3.9.8.8-3.8-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1l-.8 1c-.1.1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5.1-.2c0-.1 0-.3-.1-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3s-.8.8-.8 1.9.8 2.2.9 2.3a10.3 10.3 0 0 0 3.9 3.1c.6.2 1 .4 1.4.5.6.2 1.1.1 1.5.1.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1-.2-.2-.4-.3z"/></svg>
+        Chamar no WhatsApp
+      </a>
+      <div>
+        <a class="ig-link" href="https://instagram.com/arthurdecarli08" target="_blank" rel="noopener">Instagram @arthurdecarli08</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#topo" class="brand"><span class="mono">AC</span><span>Arthur de Carli</span></a>
+    <span>Edição de vídeo e conteúdo · <a href="https://instagram.com/arthurdecarli08" target="_blank" rel="noopener">@arthurdecarli08</a></span>
+    <span>© <span id="ano">2026</span></span>
+    <div class="demo-foot">Versão de demonstração</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5543991328522?text=Oi%2C%20Arthur%21%20Quero%20pedir%20uma%20amostra%20gr%C3%A1tis." target="_blank" rel="noopener" data-wa="Oi, Arthur! Quero pedir uma amostra grátis." aria-label="Pedir amostra grátis no WhatsApp">
+  <span class="wa-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19.1 4.9A9.9 9.9 0 0 0 3.3 15.6L2 22l6.5-1.3A9.9 9.9 0 0 0 12 22a10 10 0 0 0 7.1-17.1zM12 20.2a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-3.9.8.8-3.8-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1l-.8 1c-.1.1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5.1-.2c0-.1 0-.3-.1-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3s-.8.8-.8 1.9.8 2.2.9 2.3a10.3 10.3 0 0 0 3.9 3.1c.6.2 1 .4 1.4.5.6.2 1.1.1 1.5.1.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.1-.2-.2-.4-.3z"/></svg></span>
+  <span class="wa-label">Amostra grátis</span>
+</a>
+
+<script>
+const WHATSAPP = "5543991328522";
+document.querySelectorAll("[data-wa]").forEach(a => {
+  a.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(a.dataset.wa);
+  a.target = "_blank";
+  a.rel = "noopener";
+});
+
+document.getElementById("ano").textContent = new Date().getFullYear();
+
+const menuBtn = document.querySelector(".menu-btn");
+const menuPanel = document.getElementById("menu-panel");
+menuBtn.addEventListener("click", () => {
+  const open = menuPanel.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  menuBtn.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+});
+menuPanel.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+  menuPanel.classList.remove("open");
+  menuBtn.setAttribute("aria-expanded", "false");
+  menuBtn.setAttribute("aria-label", "Abrir menu");
+}));
+
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+</script>
+</body>
+</html>

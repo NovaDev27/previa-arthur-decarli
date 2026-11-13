@@ -1,0 +1,59 @@
+name: Decode images and deploy Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  prepare-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enable GitHub Pages if needed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api --method POST "repos/${{ github.repository }}/pages" \
+            -f build_type=workflow \
+            -f "source[branch]=main" \
+            -f "source[path]=/" \
+            || true
+      - name: Decode images and commit if missing
+        run: |
+          set -e
+          mkdir -p clientes/andrea-vermont clientes/claudio-duarte clientes/fibrillare
+          changed=0
+          decode() {
+            local b64="$1" dest="$2"
+            if [ ! -f "$dest" ]; then
+              base64 -d "$b64" > "$dest"
+              changed=1
+            fi
+          }
+          decode assets-b64/arthur.jpg.b64 arthur.jpg
+          decode assets-b64/andrea-vermont-foto.jpg.b64 clientes/andrea-vermont/foto.jpg
+          decode assets-b64/claudio-duarte-foto.jpg.b64 clientes/claudio-duarte/foto.jpg
+          decode assets-b64/fibrillare-logo.jpg.b64 clientes/fibrillare/logo.jpg
+          touch .nojekyll
+          if [ "$changed" = "1" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add arthur.jpg clientes .nojekyll
+            git commit -m "Add preview images from base64 sidecars"
+            git push
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - id: deployment
+        uses: actions/deploy-pages@v4
